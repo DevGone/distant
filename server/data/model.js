@@ -4,6 +4,7 @@ var Slug = require('../helpers/slug');
 //
 // - Schools [
 //     slug : {
+//       id : ,
 //       slug : ,
 //       name : ,
 //       city : ,
@@ -19,17 +20,28 @@ var Slug = require('../helpers/slug');
 var DEFAULT_SCORE = 0;
 
 var _idSchool = 0;
-var _schools = {};
+var _schools = {
+  "berlioz": {
+    id: _idSchool++,
+    slug: "berlioz",
+    name: "Berlioz",
+    city: "Lyon",
+    teacherName: "Madame Sarthe",
+    studentGroups: [
+    ],
+    score: 100
+  }
+};
 
 exports.getAllSchools = function() {
-  return Object.values(_schools);
+  return _schools;
 }
 
 exports.getSchool = function(schoolSlug) {
-  return _schools.schoolSlug;
+  return _schools[schoolSlug];
 };
 
-export.addSchool = function(name, city, teacherName) {
+exports.addSchool = function(name, city, teacherName) {
   if (name && city && teacherName) {
 
 // Create new school
