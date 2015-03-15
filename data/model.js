@@ -33,6 +33,8 @@ var _schools = {
   }
 };
 
+var _measures = [];
+
 exports.getAllSchools = function() {
   return _schools;
 }
@@ -62,3 +64,13 @@ exports.addSchool = function(name, city, teacherName) {
   }
   return null;
 };
+
+
+exports.getAllMeasures = function() {
+  return _measures;
+}
+
+exports.addMeasure = function(measure) {
+  _measures.push(measure);
+  return measure;
+}
