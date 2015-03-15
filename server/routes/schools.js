@@ -11,7 +11,20 @@ router.route('/')
     response.json(model.getAllSchools());
   })
   .post(parseUrlEncoded, function(request, response) {
-
+    var name = request.query.name;
+    var city = request.query.city;
+    var teacherName = request.query.teacherName;
+    if (!name || !city || !teacherName) {
+      name = request.body.name;
+      city = request.body.city;
+      teacherName = request.body.teacherName;
+    }
+    var school = model.addSchool(name, city, teacherName);
+    if (school) {
+      response.redirect('/schools/'+school.slug);
+    } else {
+      response.sendStatus(400);
+    }
   });
 
 router.route('/:slug')
