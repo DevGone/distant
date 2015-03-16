@@ -1,5 +1,6 @@
 {{self.title}}
 
-div(ng-repeat="school in self.schools")
+div
   ul
-    li {{school.name}}
+    li(ng-repeat="school in self.schools")
+      a(href="") {{school.name}}
