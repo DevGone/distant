@@ -15,6 +15,7 @@
 
   app.controller('HomeController', function($scope) {
     var self = $scope;
+    $scope.self = self;
 
     self.title = 'Bonjour !'
   });
