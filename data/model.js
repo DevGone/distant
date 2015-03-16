@@ -74,3 +74,7 @@ exports.addMeasure = function(measure) {
   _measures.push(measure);
   return measure;
 }
+
+exports.clearMeasures = function() {
+  _measures = []
+}

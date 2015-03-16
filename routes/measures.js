@@ -14,6 +14,10 @@ router.route('/')
     var measure = request.body;
     console.log(request.body);
     response.json(model.addMeasure(measure));
+  })
+  .delete(function(request, response) {
+    model.clearMeasures();
+    response.sendStatus(200);
   });
 
 module.exports = router;
