@@ -67,12 +67,55 @@ app.use(function(err, req, res, next) {
   });
 });
 
+var teacherSocket = null;
+var walterSocket = null;
+
+var setTeacherSocket = function(socket) {
+  teacherSocket = socket;
+
+  console.log('Teacher identificated');
+
+  socket.on('message', function(data) {
+    if (walterSocket) {
+      walterSocket.emit('message', data);
+    }
+  });
+
+  socket.on('setColor', function(data) {
+    if (walterSocket) {
+      walterSocket.emit('setColor', data);
+    }
+  });
+};
+
+var setWalterSocket = function(socket) {
+  walterSocket = socket;
+
+  console.log('Walter identificated');
+
+  socket.on('message', function(data) {
+    if (teacherSocket) {
+      teacherSocket.emit('message', data);
+    }
+  });
+};
+
 io.on('connection', function (socket) {
-  socket.emit('news', { hello: 'world' });
-  socket.on('my other event', function (data) {
-    console.log(data);
+
+  socket.emit('info', { type: 'express 4' });
+
+  socket.on('identification', function (data) {
+
+    if (data.device === 'teacher') {
+      setTeacherSocket(socket);
+    } else if (data.device === 'walter') {
+      setWalterSocket(socket);
+    }
+
   });
 });
+
+
 
 
 module.exports = app;

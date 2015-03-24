@@ -1,6 +1,15 @@
 extends layout
 
 block content
+
+  ul
+    li
+      a(onClick="setSpheroRed()") Red
+    li
+      a(onClick="setSpheroGreen()") Green
+    li
+      a(onClick="setSpheroBlue()") Blue
+
   div(ng-app="teacher")
     ng-view
 

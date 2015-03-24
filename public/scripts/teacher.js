@@ -1,8 +1,51 @@
 var socket = io('http://localhost:3000');
-  socket.on('news', function (data) {
-    console.log(data);
-    socket.emit('my other event', { my: 'data' });
-  });
+
+socket.emit('identification', { device: 'teacher'});
+
+socket.on('info', function (data) {
+  console.log(data);
+  socket.emit('my other event', { my: 'data' });
+});
+
+socket.on('broadcast', function(data) {
+  console.log('Received broadcast :\n' + data);
+});
+
+socket.on('event', function(event) {
+  console.log(event);
+});
+
+socket.emit('message', {data: 'love french fries'});
+
+var setSpheroRed = function() {
+  var color = {
+    red: 255,
+    green: 0,
+    blue: 0
+  };
+  socket.emit('setColor', color);
+  console.log(color);
+};
+
+var setSpheroGreen = function() {
+  var color = {
+    red: 0,
+    green: 255,
+    blue: 0
+  };
+  socket.emit('setColor', color);
+  console.log(color);
+};
+
+var setSpheroBlue = function() {
+  var color = {
+    red: 0,
+    green: 0,
+    blue: 255
+  };
+  socket.emit('setColor', color);
+  console.log(color);
+};
 
 
 (function() {
