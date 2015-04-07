@@ -1,0 +1,19 @@
+extends layout
+
+block content
+
+  ul
+    li
+      a(onClick="setSpheroRed()") Red
+    li
+      a(onClick="setSpheroGreen()") Green
+    li
+      a(onClick="setSpheroBlue()") Blue
+
+  div(ng-app="teacher")
+    ng-view
+
+  script(src='/socket.io/socket.io.js')
+  script(src='https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.js')
+  script(src='https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular-route.js')
+  script(src='/scripts/teacher.js')
