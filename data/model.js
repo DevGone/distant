@@ -19,6 +19,7 @@ var Slug = require('../helpers/slug');
 
 var DEFAULT_SCORE = 0;
 
+var _activity = 10;
 var _idSchool = 0;
 var _schools = {
   "berlioz": {
@@ -37,7 +38,7 @@ var _measures = [];
 
 exports.getAllSchools = function() {
   return _schools;
-}
+};
 
 exports.getSchool = function(schoolSlug) {
   return _schools[schoolSlug];
@@ -68,13 +69,21 @@ exports.addSchool = function(name, city, teacherName) {
 
 exports.getAllMeasures = function() {
   return _measures;
-}
+};
 
 exports.addMeasure = function(measure) {
   _measures.push(measure);
   return measure;
-}
+};
 
 exports.clearMeasures = function() {
   _measures = []
-}
+};
+
+exports.getActivity = function() {
+  return _activity;
+};
+
+exports.setActivity = function(activity) {
+  _activity = activity;
+};
